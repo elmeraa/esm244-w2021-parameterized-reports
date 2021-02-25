@@ -28,6 +28,23 @@ country_name <- unique(salmon_imports$Country)
 for (country in country_name) {
   render_salmon_report(country)
 }
-```
 
-# Add your functions here for the 'your turn' part!
+
+
+# ------- PENGUINS RENDERING ------- #
+
+render_penguin_report = function(species) {
+  rmarkdown::render(
+    input = "penguins.Rmd", # What's the input file to render?
+    params = list(import_species = species), # What are the parameters?
+    output_file = paste0(species, "_report", ".html") # What should I name the output file?
+  )
+}
+
+# A for loop to render all penguin species:
+
+penguins_name <- unique(penguins$species)
+
+for (species in penguins_name) {
+  render_penguin_report(species)
+}
